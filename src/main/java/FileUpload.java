@@ -19,8 +19,8 @@ public class FileUpload {
 
     private static AWSCredentials credentials;
     private static AmazonS3 s3client;
-    private static final String BUCKET_NAME = "com-lftechnology-vyaguta-dev";
-    private static final String S3FOLDER_NAME = "vyaguta-employees";
+    private static final String BUCKET_NAME = "vyaguta-dev";
+    private static final String S3FOLDER_NAME = "employees";
     private static final String PATH_TO_IMAGES = "/home/leapfrog/images";
 
     public static void uploadMultipleFiles() throws IOException {
@@ -40,9 +40,6 @@ public class FileUpload {
             for (int i = 0; i < listOfFiles.length; i++) {
                 if (listOfFiles[i].isFile()) {
                     String fileName = listOfFiles[i].getName();
-                    System.out.println(listOfFiles.length);
-                    System.out.println(i);
-                    System.out.println(fileName);
                     String employeeNo = computeEmployeeNo(fileName);
                     psFetch.setString(1, employeeNo);
                     ResultSet rs = psFetch.executeQuery();
