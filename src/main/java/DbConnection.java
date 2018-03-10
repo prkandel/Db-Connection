@@ -42,8 +42,6 @@ public class DbConnection {
         try {
             postgresConnection = getPostgresConnection();
             mysqlConnection = getMySqlConnection();
-            System.out.println("PostgresConnection=" + postgresConnection);
-            System.out.println("mysqlConnection=" + mysqlConnection);
 
             List<Map<String, Object>> userList = new ArrayList<Map<String, Object>>();
             PreparedStatement psMySql = mysqlConnection.prepareStatement("select username,join_date,dateof_birth,resigned_date from user");
@@ -66,7 +64,6 @@ public class DbConnection {
                 psPostgres.setDate(2, (Date) map2.get("dob"));
                 psPostgres.setDate(3, (Date) map2.get("resignedDate"));
                 psPostgres.setString(4, (String) map2.get("userName"));
-                System.out.println(psPostgres);
                 psPostgres.executeUpdate();
             }
 
